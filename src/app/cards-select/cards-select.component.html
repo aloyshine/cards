@@ -1,0 +1,37 @@
+<div class="container-modal" data-backdrop="static" >
+    <Span class = "title-welcome">Welcome To Card Game</Span>
+    <div class="form-group">  
+
+        <label class="label-class" for="players">Select the number of Players:</label>  
+
+        <select formControlName="players" class="form-control" (change)="selectEvent($event)">   
+            <option disabled>Select players</option>  
+            <option>0</option>  
+            <option *ngFor="let player of players"> {{player}}</option>  
+        </select>
+    </div>  
+
+    <div class="subTitles" *ngIf="cardsSelected===false;else selectedcardsTemplate">
+            The total cards are shown below
+    </div>
+    <ng-template #selectedcardsTemplate >
+        <div class="subTitles">
+                These are your cards
+        </div>   
+    </ng-template>
+
+    <span  *ngFor="let card of allCardList">
+        <span class = "playingcard">
+           <span class="cardtext">{{card}}</span> 
+        </span>
+    </span>
+ 
+</div>
+<div>
+    <span class="totalButtons">
+        <button  class="button-class"  [disabled]="cardsSelected===false" (click)="sortevent()">Sort</button> 
+    </span>
+    <span class="totalButtons" >
+        <button  class="button-class" (click)="startagain()">startAgain</button> 
+    </span>
+</div>
